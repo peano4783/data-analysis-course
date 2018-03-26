@@ -1,0 +1,119 @@
+\documentclass[landscape]{slides}
+\usepackage[landscape]{geometry}
+\usepackage[russian]{babel}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\begin{document}
+\begin{slide}
+План работы
+\begin{itemize}
+\item Простая линейная регрессия
+\item Графическая библиотека Bokeh
+\item Метод стохастического градиентного спуска
+\end{itemize}
+\end{slide}
+
+\begin{slide}
+Простая линейная регрессия
+\begin{itemize}
+\item На основании выборки $(x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)$
+\item Прямая линия
+$$ y = \beta_0 + \beta_1 x $$
+\item Прямая выбрана так, чтобы минимизировать расхождение
+между выборочными данными и точками, лежащими на этой прямой
+\item Как построить такую прямую (найти $\beta_0$ и $\beta_1$)?
+\end{itemize}
+\end{slide}
+
+
+\begin{slide}
+Расхождение между выборочными данными и точками на прямой.
+Метод наименьших квадратов (ordinary least squares, OLS).
+$$ \sum_{i=1}^n ((\beta_0 + \beta_1 x_i) - y_i)^2 \to \min_{\beta_0, \beta_1} $$
+\begin{itemize}
+\item Подберем вручную?
+\item Продифференцируем и найдем критические точки?
+\item Используем численный метод нахождения минимума?
+\end{itemize}
+\end{slide}
+
+\begin{slide}
+Набор данных
+
+\begin{tabular}{c|c}
+   x & y \\
+\hline
+10.0 &  8.04 \\
+ 8.0 &  6.95 \\
+13.0 &  7.58 \\
+ 9.0 &  8.81 \\
+11.0 &  8.33 \\
+14.0 &  9.96 \\
+ 6.0 &  7.24 \\
+ 4.0 &  4.26 \\
+12.0 & 10.84 \\
+ 7.0 &  4.82 \\
+ 5.0 &  5.68
+\end{tabular}
+\end{slide}
+
+
+\begin{slide}
+Визуализация в Bokeh
+\begin{verbatim}
+from bokeh.plotting import figure, output_file, show
+
+x=[10.0,8.0,13.0,9.0,11.0,14.0,6.0,4.0,12.0,7.0,5.0]
+y=[8.04,6.95,7.58,8.81,8.33,9.96,7.24,4.26,10.84,4.82,5.68]
+
+output_file("linreg.html")
+p = figure(plot_width=400, plot_height=400)
+p.line([1, 10], [1, 15], line_width=2)
+p.circle(x, y, fill_color="white", size=8)
+show(p)
+\end{verbatim}
+\end{slide}
+
+
+
+\begin{slide}
+Градиентный спуск
+\begin{itemize}
+\item Задача оптимизации:
+$$ Q(w) = \frac 1n \sum_{i=1}^n Q_i(w) \to \min_w $$
+\item Стандартный метод градиентного спуска для минимизации $Q(w)$
+$$ w:=w - \eta \nabla Q(w) $$
+В нашем случае
+$$ w:=w - \eta \sum_{i=1}^n \nabla Q_i(w)/n $$
+\end{itemize}
+\end{slide}
+
+\begin{slide}
+Стохастический градиентный спуск
+\begin{enumerate}
+\item Выбрать начальный вектор параметров $w$ и интенсивность обучения $\eta$
+\item Повторять до сходимости:
+\begin{enumerate}
+\item Случайно перемешать выборочные данные
+\item Для $i=1,2,\ldots,n$, выполнить
+$$ w:=w - \eta \nabla Q_i(w) $$
+\end{enumerate}
+\end{enumerate}
+\end{slide}
+
+
+\begin{slide}
+Задание на практику и д/з
+\begin{enumerate}
+\item Запрограммируйте метод градиентного спуска для поиска параметров
+$\beta_0$ и $\beta_1$ уравнения линейной регрессии
+\item Запрограммируйте метод стохастического градиентного спуска для поиска параметров
+$\beta_0$ и $\beta_1$ уравнения линейной регрессии
+\item Примените полученные методы к набору данных со слайда 4 и
+измените код на слайде 5 так, чтобы он визуализировал 
+получившееся уравнение линейной регрессии вместе с выборочными данными.
+\end{enumerate}
+Сдайте получившуюся программу на листочке.
+\end{slide}
+
+\end{document}

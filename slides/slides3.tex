@@ -1,0 +1,158 @@
+\documentclass[landscape]{slides}
+\usepackage[landscape]{geometry}
+\usepackage[russian]{babel}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\begin{document}
+
+\begin{slide}
+Простая линейная регрессия
+$$ Q(\beta_0,\beta_1) = \frac 1n \sum_{i=1}^n Q_i(\beta_0, \beta_1) =  \frac 1n \sum_{i=1}^n ((\beta_0 + \beta_1 x_i) - y_i)^2 \to \min_{\beta_0, \beta_1} $$
+Стохастический градиентный спуск:
+\begin{enumerate}
+\item Выбрать начальный вектор параметров $(\beta_0, \beta_1)$ и интенсивность обучения $\eta$
+\item Повторять до сходимости:
+\begin{enumerate}
+\item Случайно перемешать выборочные данные
+\item Для $i=1,2,\ldots,n$ выполнить
+$$
+\left[\begin{array}{c}
+\beta_0 \\ \beta_1
+\end{array}\right]
+:= 
+\left[\begin{array}{c}
+\beta_0 \\ \beta_1
+\end{array}\right]
+- \eta
+\left[\begin{array}{c}
+2(\beta_0 + \beta_1 x_i - y_i) \\
+2x_i(\beta_0 + \beta_1 x_i - y_i)
+\end{array}\right]
+$$
+\end{enumerate}
+\end{enumerate}
+\end{slide}
+
+
+\begin{slide}
+$\eta=0.001$, $\sim 10000$ iterations
+
+\begin{tabular}{c|c|cc}
+   $x_i$ & $y_i$ & $\beta_0$ & $\beta_1$ \\
+\hline
+  -- &    -- &       1     & 1 \\
+10.0 &  8.04 &  0.99408    & 0.9408\\
+ 8.0 &  6.95 &  0.99093904 & 0.91567232\\
+13.0 &  7.58 &  0.98030968 & 0.77749066\\
+ 9.0 &  8.81 &  0.98197423 & 0.7924716 \\
+11.0 &  8.33 &  0.97923591 & 0.76235004\\
+14.0 &  9.96 &  0.97585163 & 0.71497022\\
+ 6.0 &  7.24 &  0.97980029 & 0.73866214\\
+ 4.0 &  4.26 &  0.98045139 & 0.74126655\\
+12.0 & 10.84 &  0.98238009 & 0.76441095\\
+ 7.0 &  4.82 &  0.97935358 & 0.74322536\\
+ 5.0 &  5.68 &  0.98132262 & 0.75307055\\
+     &       &  $\vdots$   & $\vdots$  \\
+     &       &  3.03339774 & 0.50766523
+\end{tabular}
+\end{slide}
+
+\begin{slide}
+Стохастический градиентный спуск (SGD)
+\begin{itemize}
+\item Теорема сходимости. При убывающем $\eta$ и выполнении некоторых слабых условий
+SGD сходится почти наверно к глобальному минимуму целевой функции
+в случае выпуклой или псевдовыпуклой целевой функции и сходится почти наверно
+к локальному минимуму в других случаях.
+\item Применение SGD: линейная регрессия, логистическая регрессия, метод опорных векторов,
+искусственные нейронные сети.
+\end{itemize}
+\end{slide}
+
+\begin{slide}
+Варианты SGD
+\begin{itemize}
+\item Averaged stochastic gradient descent
+\item AdaGrad (Adaptive)
+\item Adam (Adaptive moment estimation)
+\item Kalman-based Stochastic Gradient Descent (kSGD)
+\end{itemize}
+\url{https://en.wikipedia.org/wiki/Stochastic_gradient_descent}
+\end{slide}
+
+\begin{slide}
+Пример применения линейной регрессии\\
+(из документации к scikit-learn)
+\begin{verbatim}
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn import datasets, linear_model
+from sklearn.metrics import mean_squared_error, r2_score
+
+# Load the diabetes dataset
+diabetes = datasets.load_diabetes()
+# Use only one feature
+diabetes_X = diabetes.data[:, np.newaxis, 2]
+# Split the data into training/testing sets
+diabetes_X_train = diabetes_X[:-20]
+diabetes_X_test = diabetes_X[-20:]
+# Split the targets into training/testing sets
+diabetes_y_train = diabetes.target[:-20]
+diabetes_y_test = diabetes.target[-20:]
+
+# Create linear regression object
+regr = linear_model.LinearRegression()
+# Train the model using the training sets
+regr.fit(diabetes_X_train, diabetes_y_train)
+# Make predictions using the testing set
+diabetes_y_pred = regr.predict(diabetes_X_test)
+
+# The coefficients
+print('Coefficients: \n', regr.coef_)
+# The mean squared error
+print("Mean squared error: %.2f"
+% mean_squared_error(diabetes_y_test, diabetes_y_pred))
+# Explained variance score: 1 is perfect prediction
+print('Variance score: %.2f'
+% r2_score(diabetes_y_test, diabetes_y_pred))
+# Plot outputs
+plt.scatter(diabetes_X_test, diabetes_y_test, color='black')
+plt.plot(diabetes_X_test, diabetes_y_pred,
+color='blue', linewidth=3)
+plt.xticks(())
+plt.yticks(())
+plt.show()
+\end{verbatim}
+\end{slide}
+
+
+\begin{slide}
+Требования к проекту
+\begin{itemize}
+\item Описание набора данных
+\item Что Вы хотите сделать с набором данных
+\item По крайней мере одна иллюстрация, обосновывающая Ваши намерения
+\item Какая от этого будет польза (5V -- value)
+\item Презентация 5 мин. макс.
+\end{itemize}
+\end{slide}
+
+\begin{slide}
+Требования к проекту
+\begin{itemize}
+\item Много самостоятельной работы: поиск массивов данных, анализ методов
+\item Оценивается не столько содержание, сколько форма (так будет не всегда)
+\item Представьте, что вы просите инвестиции на свой проект; нужно, чтобы презентация была убедительной для инвесторов
+\item В принципе, проект можно не делать ($-25$ баллов)
+\end{itemize}
+\end{slide}
+
+\begin{slide}
+Где искать вдохновение для проекта
+\begin{itemize}
+\item \href{http://blog.thedataincubator.com/2014/09/how-to-prepare-for-the-data-incubator/}{How to prepare for the data incubator}
+\item \href{http://blog.thedataincubator.com/2014/10/data-sources-for-cool-data-science-projects-part-1/}{Data Sources for Cool Data Science Projects: Part 1}
+\end{itemize}
+\end{slide}
+
+\end{document}

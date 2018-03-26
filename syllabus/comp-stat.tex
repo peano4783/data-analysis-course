@@ -1,0 +1,475 @@
+\documentclass{article}
+\usepackage[russian]{babel}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\begin{document}
+{\LARGE \bf Вычислительная статистика}
+
+\section{Краткое описание курса}
+
+
+\section{Предварительные требования}
+Для успешного освоения материала курса требуется владеть основами программирования, математического анализа, линейной алгебры и геометрии, математической статистики. Знакомство с языком программирования Python желательно, но необязательно.
+
+\section{Получаемые компетенции}
+По итогам освоения курса студент должен:
+\begin{enumerate}
+\item уметь выбирать ПО для анлиза данных
+\item знать методы оптимизации
+\end{enumerate}
+
+\section{Содержание курса}
+
+% Я здесь все равно не собираюсь ни делать ЭОР, ни строго соблюдать темы.
+% Главное здесь -- побыстрее сделать описание, упражнения, и все такое,
+% поэтому нужно максимально следовать документации по scikit-learn.
+
+
+(pg. 147--567)
+
+\begin{enumerate}
+\item \textbf{Введение} (2)\\
+Библиотека машинного обучения scikit-learn.
+
+\item \textbf{Supervised learning} (4)\\
+3.1.1 Generalized Linear Models
+Ordinary Least Squares
+Ridge Regression
+Lasso
+Using cross-validation
+Information-criteria based model selection
+Multi-task Lasso
+Elastic Net
+Multi-task Elastic Net
+Least Angle Regression (LARS)
+LARS Lasso
+Orthogonal Matching Pursuit (OMP)
+Bayesian Regression
+Bayesian Ridge Regression
+Logistic regression
+Stochastic Gradient Descent - SGD
+Perceptron
+Passive Aggressive Algorithms
+Robustness regression: outliers and modeling errors
+RANSAC: RANdom SAmple Consensus
+Theil-Sen estimator: generalized-median-based estimator
+Huber Regression
+Polynomial regression: extending linear models with basis functions
+
+3.1.2 Linear and Quadratic Discriminant Analysis
+Dimensionality reduction using Linear Discriminant Analysis
+3.1.3 Kernel ridge regression
+3.1.4 Support Vector Machines
+Classification
+Multi-class classification
+Scores and probabilities
+Unbalanced problems
+Regression
+Density estimation, novelty detection
+Complexity
+Kernel functions
+
+3.1.5 Stochastic Gradient Descent
+Classification
+Regression
+Stochastic Gradient Descent for sparse data
+Complexity
+
+3.1.6 Nearest Neighbors
+Unsupervised Nearest Neighbors
+Finding the Nearest Neighbors
+KDTree and BallTree Classes
+Nearest Neighbors Classification
+Nearest Neighbors Regression
+Nearest Centroid Classifier
+Nearest Shrunken Centroid
+
+3.1.7 Gaussian Processes
+Gaussian Process Regression (GPR)
+GPR with noise-level estimation
+Comparison of GPR and Kernel Ridge Regression
+Gaussian Process Classification (GPC)
+Probabilistic predictions with GPC
+Kernels for Gaussian Processes
+Radial-basis function (RBF) kernel
+Matérn kernel
+Rational quadratic kernel
+Exp-Sine-Squared kernel
+Dot-Product kernel
+
+3.1.8 Cross decomposition
+
+3.1.9 Naive Bayes
+Gaussian Naive Bayes
+Multinomial Naive Bayes
+Bernoulli Naive Bayes
+Out-of-core naive Bayes model fitting
+
+3.1.10 Decision Trees
+Classification
+Regression
+Multi-output problems
+Tree algorithms: ID3, C4.5, C5.0 and CART
+Classification criteria
+Regression criteria
+
+3.1.11 Ensemble methods
+Bagging meta-estimator
+Forests of randomized trees
+Random Forests
+Parallelization
+Feature importance evaluation
+AdaBoost
+Gradient Tree Boosting
+
+3.1.12 Multiclass and multilabel algorithms
+
+3.1.13 Feature selection
+Removing features with low variance
+Univariate feature selection
+Recursive feature elimination
+Feature selection using SelectFromModel
+L1-based feature selection
+Tree-based feature selection
+
+3.1.14 Semi-Supervised
+Label Propagation
+
+3.1.15 Isotonic regression
+
+3.1.16 Probability calibration
+
+3.1.17 Neural network models (supervised)
+Multi-layer Perceptron
+Classification
+Regression
+Regularization
+
+\item \textbf{Unsupervised learning} (4)\\
+
+3.2.1 Gaussian mixture models
+Gaussian Mixture
+Pros and cons of class GaussianMixture
+Estimation algorithm Expectation-maximization
+Estimation algorithm: variational inference
+The Dirichlet Process
+
+3.2.2 Manifold learning
+Isomap
+Locally Linear Embedding
+Modified Locally Linear Embedding
+Hessian Eigenmapping
+Spectral Embedding
+Local Tangent Space Alignment
+Multi-dimensional Scaling (MDS)
+t-distributed Stochastic Neighbor Embedding (t-SNE)
+Optimizing t-SNE
+Barnes-Hut t-SNE
+
+
+3.2.3 Clustering
+K-means
+Mini Batch K-Means
+Affinity Propagation
+Mean Shift
+Spectral clustering
+Different label assignment strategies
+Hierarchical clustering
+Different linkage type: Ward, complete and average linkage
+Adding connectivity constraints
+Varying the metric
+DBSCAN
+Birch
+Clustering performance evaluation
+Adjusted Rand index
+Advantages
+Drawbacks
+Mutual Information based scores
+Homogeneity, completeness and V-measure
+Fowlkes-Mallows scores
+Silhouette Coefficient
+Calinski-Harabaz Index
+
+3.2.4 Biclustering
+Spectral Co-Clustering
+Spectral Biclustering
+Biclustering evaluation
+
+3.2.5 Decomposing signals in components (matrix factorization problems)
+Principal component analysis (PCA)
+Exact PCA and probabilistic interpretation
+Incremental PCA
+PCA using randomized SVD
+Kernel PCA
+Sparse principal components analysis (SparsePCA and MiniBatchSparsePCA)
+Truncated singular value decomposition and latent semantic analysis
+Dictionary Learning
+Sparse coding with a precomputed dictionary
+Generic dictionary learning
+Mini-batch dictionary learning
+Factor Analysis
+Independent component analysis (ICA)
+Non-negative matrix factorization (NMF or NNMF)
+NMF with the Frobenius norm
+NMF with a beta-divergence
+Latent Dirichlet Allocation (LDA)
+
+3.2.6 Covariance estimation
+Empirical covariance
+Shrunk Covariance
+Basic shrinkage
+Ledoit-Wolf shrinkage
+Oracle Approximating Shrinkage
+Sparse inverse covariance
+Robust Covariance Estimation
+Minimum Covariance Determinant
+
+3.2.7 Novelty and Outlier Detection
+Novelty Detection
+Outlier Detection
+Fitting an elliptic envelope
+Isolation Forest
+Local Outlier Factor
+One-class SVM versus Elliptic Envelope versus Isolation Forest versus LOF
+
+3.2.8 Density Estimation
+Density Estimation: Histograms
+Kernel Density Estimation
+
+3.2.9 Neural network models (unsupervised)
+Restricted Boltzmann machines
+Bernoulli Restricted Boltzmann machines
+Stochastic Maximum Likelihood learning
+
+\item \textbf{Model selection and evaluation} (4)\\
+3.3 Model selection and evaluation
+3.3.1 Cross-validation: evaluating estimator performance
+Computing cross-validated metrics
+The cross_validate function and multiple metric evaluation
+Obtaining predictions by cross-validation
+Cross validation iterators
+K-fold
+Repeated K-Fold
+Leave One Out (LOO)
+Leave P Out (LPO)
+Random permutations cross-validation a.k.a. Shuffle \& Split
+Cross-validation iterators with stratification based on class labels.
+Stratified k-fold
+Stratified Shuffle Split
+Cross-validation iterators for grouped data
+Group k-fold
+Leave One Group Out
+Leave P Groups Out
+Group Shuffle Split
+Predefined Fold-Splits / Validation-Sets
+Cross validation of time series data
+Time Series Split
+
+3.3.2 Tuning the hyper-parameters of an estimator
+Exhaustive Grid Search
+Randomized Parameter Optimization
+Specifying an objective metric
+Specifying multiple metrics for evaluation
+Composite estimators and parameter spaces
+Model selection: development and evaluation
+Model specific cross-validation
+Out of Bag Estimates
+
+3.3.3 Model evaluation: quantifying the quality of predictions
+The scoring parameter: defining model evaluation rules
+Common cases: predefined values
+Defining your scoring strategy from metric functions
+Implementing your own scoring object
+Using multiple metric evaluation
+Classification metrics
+From binary to multiclass and multilabel
+Accuracy score
+Cohen’s kappa
+Confusion matrix
+Hamming loss
+Jaccard similarity coefficient score
+Precision, recall and F-measures
+Binary classification
+Multiclass and multilabel classification
+Hinge loss
+Log loss
+Matthews correlation coefficient
+Receiver operating characteristic (ROC)
+Zero one loss
+Brier score loss
+Multilabel ranking metrics
+Coverage error
+Label ranking average precision
+Ranking loss
+Regression metrics
+Explained variance score
+Mean absolute error
+Mean squared error
+Mean squared logarithmic error
+Median absolute error
+$R^2$ score, the coefficient of determination
+Clustering metrics
+Dummy estimators
+
+3.3.4 Model persistence
+Persistence example
+Security & maintainability limitations
+
+3.3.5 Validation curves: plotting scores to evaluate models
+Validation curve
+Learning curve
+
+
+\item \textbf{Dataset transformations} (4)\\
+3.4.1 Pipeline and FeatureUnion: combining estimators
+Pipeline: chaining estimators
+Caching transformers: avoid repeated computation
+FeatureUnion: composite feature spaces
+
+3.4.2 Feature extraction
+Loading features from dicts
+Feature hashing
+
+3.4.3 Preprocessing data
+Standardization, or mean removal and variance scaling
+Scaling features to a range
+Scaling sparse data
+Scaling data with outliers
+Centering kernel matrices
+Non-linear transformation
+Normalization
+Binarization
+Feature binarization
+Encoding categorical features
+Imputation of missing values
+Generating polynomial features
+Custom transformers
+
+3.4.4 Unsupervised dimensionality reduction
+PCA: principal component analysis
+Random projections
+Feature agglomeration
+
+3.4.5 Random Projection
+The Johnson-Lindenstrauss lemma
+Gaussian random projection
+Sparse random projection
+
+3.4.6 Kernel Approximation
+Nystroem Method for Kernel Approximation
+Radial Basis Function Kernel
+Additive Chi Squared Kernel
+Skewed Chi Squared Kernel
+
+
+3.4.7 Pairwise metrics, Affinities and Kernels
+Cosine similarity
+Linear kernel
+Polynomial kernel
+Sigmoid kernel
+RBF kernel
+Laplacian kernel
+Chi-squared kernel
+
+3.4.8 Transforming the prediction target (y)
+Label binarization
+Label encoding
+
+
+\item \textbf{Dataset loading utilities} (4)\\
+3.5.1 General dataset API
+3.5.2 Toy datasets
+3.5.3 Sample images
+3.5.4 Sample generators
+Generators for classification and clustering
+Single label
+Multilabel
+Biclustering
+Generators for regression
+Generators for manifold learning
+Generators for decomposition
+3.5.5 Datasets in svmlight / libsvm format
+3.5.6 Loading from external datasets
+The Olivetti faces dataset
+The 20 newsgroups text dataset
+Converting text to vectors
+Filtering text for more realistic training
+Downloading datasets from the mldata.org repository
+The Labeled Faces in the Wild face recognition dataset
+Forest covertypes
+RCV1 dataset
+3.5.7 The Olivetti faces dataset
+3.5.8 The 20 newsgroups text dataset
+Converting text to vectors
+Filtering text for more realistic training
+3.5.9 Downloading datasets from the mldata.org repository
+3.5.10 The Labeled Faces in the Wild face recognition dataset
+3.5.11 Forest covertypes
+3.5.12 RCV1 dataset
+3.5.13 Boston House Prices dataset
+3.5.14 Breast Cancer Wisconsin (Diagnostic) Database
+3.5.15 Diabetes dataset
+3.5.16 Optical Recognition of Handwritten Digits Data Set
+3.5.17 Iris Plants Database
+3.5.18 Linnerrud dataset
+
+\item \textbf{Examples} \\
+4.1 Plotting Cross-Validated Predictions
+4.2 Concatenating multiple feature extraction methods
+4.3 Pipelining: chaining a PCA and a logistic regression
+4.4 Isotonic Regression
+4.5 Imputing missing values before building an estimator
+4.6 Face completion with a multi-output estimators
+4.7 Selecting dimensionality reduction with Pipeline and Grid-
+SearchCV
+4.8 Multilabel classification
+4.9 The Johnson-Lindenstrauss bound for embedding with random
+projections
+4.10 Comparison of kernel ridge regression and SVR
+4.11 Feature Union with Heterogeneous Data Sources
+4.12 Explicit feature map approximation for RBF kernels
+
+5.1 Outlier detection on a real data set
+5.2 Compressive sensing: tomography reconstruction with L1 prior
+(Lasso)
+5.3 Topic extraction with Non-negative Matrix Factorization and La-
+tent Dirichlet Allocation
+5.4 Faces recognition example using eigenfaces and SVMs
+5.5 Model Complexity Influence
+5.6 Species distribution modeling
+5.7 Wikipedia principal eigenvector
+5.8 Visualizing the stock market structure
+5.9 Libsvm GUI
+5.10 Prediction Latency
+5.11 Out-of-core classification of text documents
+
+
+
+\end{enumerate}
+
+
+
+\section{Кодекс поведения}
+
+Как на лекциях, так и на практике, любой студент имеет право войти в аудиторию и выйти из аудитории в любое время. При этом запрещается спрашивать у преподавателя разрешения выйти или войти (вербально и невербально) и каким-либо иным образом отвлекать преподавателя и других студентов.
+
+Все сказанное в аудитории преподаватель считает услышанным и принятым к сведенью любым студентом, даже если студент в это время физически в аудитории отсутствовал.
+
+На практических занятиях первые 30 минут разговоры не допускаются, в оставшееся время допускаются  разговоры только шепотом и только по теме занятия.
+
+
+\section{Контакт с преподавателем}
+
+По любым вопросам по курсу можно проконсультироваться с преподавателем в его консультационные часы либо в конце практического занятия. Все общение с преподавателем происходит {\em лично}; преподаватель не отвечает на телефонные звонки, текстовые сообщения, электронные письма, сообщения в социальных сетях, даже содержащие слова "срочно", "пожалуйста" и т.п.
+
+\section{Методические рекомендации студентам}
+Сложный курс, как на мехмате. Наконец-то узнаете, что такое настоящее образование.
+
+
+\section{Информационные ресурсы}
+
+Некоторые полезные материалы можно найти на странице преподавателя в социальной сети Twitter:
+\url{https://twitter.com/peano83}.
+
+
+\end{document}

@@ -1,0 +1,125 @@
+\documentclass[landscape]{slides}
+\usepackage[landscape]{geometry}
+\usepackage[russian]{babel}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\begin{document}
+\begin{slide}
+Трек Data Science
+\begin{itemize}
+\item Анализ данных (5 семестр)\\
+Вычислительная статистика (6 семестр)
+\item Можно было назвать Data Science I и Data Science II.
+\item В этом семестре: учимся, работая с <<хорошими>> наборами данных
+\\
+В следующем семестре: учимся работать с произвольными наборами данных
+\end{itemize}
+\end{slide}
+
+
+\begin{slide}
+Data Science -- это статистика?
+\begin{itemize}
+\item ДА: Статистика -- это сбор данных, выявлением природы
+и составление прогнозов по этим данным.
+<<Data Science>> занимается тем же самым (с применением вычислительной техники).
+\item НЕТ: В статистике небольшие выборки ($\leq 100$)
+Data Science работает с мегабайтами и гигабайтами данных
+=> другие возможности и другие методы.
+\item Классическую мат. статистику нужно знать.
+\end{itemize}	
+\end{slide}
+
+
+\begin{slide}
+Карьера в Data Science
+\begin{itemize}
+\item Примеры требований: \href{https://krb-sjobs.brassring.com/TGnewUI/Search/home/HomeWithPreLoad?PageType=JobDetails\&partnerid=26059\&siteid=5016\&jobid=67756\&AReq=59032BR\#jobDetails=67756\_5016}{IBM}
+\href{https://yandex.ru/jobs/vacancies/dev/res\_dmir/}{Yandex}
+\item Требуются как навыки программирования и обработки данных, так и навыки статистики и машинного обучения.
+\item Как правило, требуется уровень образования не ниже магистра.
+\item Спрос большой, но подходящих кандидиатов мало.
+\end{itemize}	
+\end{slide}
+
+
+\begin{slide}
+Ландшафт ПО для анализа данных
+\begin{itemize}
+\item Язык программирования: в принципе, подходит любой, но
+предпочтительнее тот, на котором легче выражать идеи -- R, {\bf Python}, Scala, Julia
+\item Библиотеки для Python: scikit-learn, matplotlib, numpy, scipy, pandas
+\item Big Data: Hadoop, Spark
+\item Билиотеки/standalone решения: Vowpal Wabbit, XGBoost, CatBoost
+\end{itemize}	
+\end{slide}
+
+\begin{slide}
+<<Хорошие>> наборы данных
+\begin{itemize}
+\item scikit-learn: boston, iris, diabetes, digits, linnerud, wine, breast\_cancer
+\item Kaggle: \url{https://www.kaggle.com/competitions}\\
+Категории: Getting started, Playground, InClass\\
+Titanic, House Prices, Digit Recognizer, New York Taxi Trip Duration, etc.
+\item R datasets: \href{https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html}{package 'datasets'}
+\item Используйте эти наборы в своих проектах
+\end{itemize}	
+\end{slide}
+
+\begin{slide}
+Подготовка рабочей среды
+\begin{itemize}
+\item Установить Python
+\item Установить библиотеки scikit-learn, matplotlib, numpy, scipy, pandas
+\item Если все установлено правильно, код на следующий слайдах должен исполняться
+\end{itemize}	
+\end{slide}
+
+
+\begin{slide}
+Загрузка набора данных
+\begin{verbatim}
+from sklearn.datasets import load_boston
+import matplotlib.pyplot as plt
+
+boston = load_boston()
+boston['data']
+boston['target']
+boston.feature_names
+
+plt.scatter([x[1] for x in boston['data']],
+  boston['target'])  # smt. crazy, right?
+plt.show()
+\end{verbatim}
+Не очень удобно...
+\end{slide}
+
+\begin{slide}
+pandas.dataframe
+\begin{verbatim}
+import pandas as pd 
+from sklearn.datasets import load_boston
+import matplotlib.pyplot as plt
+
+dataset = load_boston()
+df = pd.DataFrame(dataset.data, columns=dataset.feature_names)
+df['target'] = dataset.target
+df
+df.describe()
+
+plt.scatter(df['CRIM'], df['target'])
+\end{verbatim}
+\end{slide}
+
+\begin{slide}
+Домашнее задание
+\begin{enumerate}
+\item Установите на свой компьютер Python и необходимые библиотеки
+\item Загрузите набор данных load\_iris в dataframe.
+\item Выведите наименования признаков (feature names)
+\item Постройте график зависимости зависимой переменной (target) от каждого признака
+\item Напишите (от руки) получившиеся программу и сдайте на следующем занятии
+\end{enumerate}	
+\end{slide}
+
+\end{document}
